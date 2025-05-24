@@ -16,13 +16,13 @@ if not credentials:
 
 # AWS IoT MQTT Client
 client = AWSIoTMQTTClient("BorderAI")
-client.configureEndpoint("a2uf7icnenaaj0-ats.iot.ap-south-1.amazonaws.com", 8883)
+client.configureEndpoint("AWS_IOT_ENDPOINT", 8883)
 
 # AWS IoT Certificate Paths
 client.configureCredentials(
-    "D:/project/AWS/Detector1/certf/AmazonRootCA1(1).pem",
-    "D:/project/AWS/Detector1/certf/39d974dacbca5998e18ecc598dd1c45ce551b8a49b2f38b3a27f63b24f6a9354-private.pem.key",
-    "D:/project/AWS/Detector1/certf/39d974dacbca5998e18ecc598dd1c45ce551b8a49b2f38b3a27f63b24f6a9354-certificate.pem.crt"
+    os.getenv("ROOT_CA_PATH"),
+    os.getenv("PRIVATE_KEY_PATH"),
+    os.getenv("CERTIFICATE_PATH")
 )
 
 # Initialize AWS Services
